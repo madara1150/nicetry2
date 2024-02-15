@@ -1,9 +1,10 @@
 package models
 
+import "gorm.io/gorm"
+
 type Post struct {
-	Id        string
-	UserId    string
-	Info      string
-	Like      int
-	CreatedAt string
+	gorm.Model
+	UserId string
+	Info   string
+	Like   int
 }

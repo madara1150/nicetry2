@@ -1,7 +1,11 @@
 package models
 
+import (
+	"gorm.io/gorm"
+)
+
 type User struct {
-	Id          string
+	gorm.Model
 	Username    string
 	Password    string
 	Fname       string
@@ -11,5 +15,4 @@ type User struct {
 	PhoneNumber string
 	Info        string
 	Coin        float64
-	CreatedAt   string
 }

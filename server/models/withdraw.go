@@ -1,11 +1,14 @@
 package models
 
+import (
+	"gorm.io/gorm"
+)
+
 type Withdraw struct {
-	Id         string
+	gorm.Model
 	UserId     string
 	Amount     float64
 	BankName   string
 	BankNumber string
 	Status     bool
-	CreatedAt  string
 }

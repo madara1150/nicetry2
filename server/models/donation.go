@@ -1,10 +1,11 @@
 package models
 
+import "gorm.io/gorm"
+
 type Donation struct {
-	Id        string
-	UserId    string
-	PostId    string
-	Amount    float64
-	Status    bool
-	CreatedAt string
+	gorm.Model
+	UserId string
+	PostId string
+	Amount float64
+	Status bool
 }

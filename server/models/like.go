@@ -1,9 +1,10 @@
 package models
 
+import "gorm.io/gorm"
+
 type Like struct {
-	Id        string
-	UserId    string
-	PostId    string
-	Status    bool
-	CreatedAt string
+	gorm.Model
+	UserId string
+	PostId string
+	Status bool
 }
