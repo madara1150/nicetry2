@@ -11,5 +11,5 @@ type User struct {
 	PhoneNumber string
 	Info        string
 	Coin        float64
-	CreateAt    string
+	CreatedAt   string
 }

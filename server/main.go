@@ -25,6 +25,6 @@ func main() {
 	if err != nil {
 		panic("failed to connect to database")
 	}
-	db.AutoMigrate(&models.User{})
+	db.AutoMigrate(&models.User{}, &models.Comment{}, &models.Donation{}, &models.Image{}, &models.Like{}, &models.Post{}, &models.Report{}, &models.Topup{}, &models.Withdraw{})
 	fmt.Println("Database migration completed!")
 }
