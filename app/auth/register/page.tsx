@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 
-const Login = () => {
+const Register = () => {
   return (
     <Container
       maxWidth="xl"
@@ -33,7 +33,18 @@ const Login = () => {
           <Stack direction={"column"} spacing={2} mt={3}>
             <TextField
               id="standard-basic"
-              label="usernamer"
+              label="fullname"
+              variant="standard"
+            />
+            <TextField
+              id="standard-basic"
+              label="username"
+              variant="standard"
+            />
+            <TextField
+              type="email"
+              id="standard-basic"
+              label="email"
               variant="standard"
             />
             <TextField
@@ -49,12 +60,12 @@ const Login = () => {
             size="medium"
             sx={{ marginTop: 2 }}
           >
-            SIGN IN
+            SIGN UP
           </Button>
         </CardContent>
 
         <CardActions sx={{ justifyContent: "center" }}>
-          <Link href="/auth/register" variant="body2" color="inherit">
+          <Link href="/auth/login" variant="body2" color="inherit">
             You have account?
           </Link>
         </CardActions>
@@ -63,4 +74,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
