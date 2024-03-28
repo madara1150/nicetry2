@@ -11,7 +11,7 @@ type User struct {
 	Fname       string
 	Lname       string
 	Role        string
-	Email       string
+	Email       string `gorm:"unique"`
 	PhoneNumber string
 	Info        string
 	Coin        float64
