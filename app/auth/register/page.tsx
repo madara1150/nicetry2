@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import {
   Button,
@@ -13,18 +13,15 @@ import {
 } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
 import { RegisterApi, UserRegistrationData } from "@/app/api/register";
+import { useRouter } from "next/navigation";
 
 const Register = () => {
-  const form = useForm<UserRegistrationData>({
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  });
+  const router = useRouter();
 
+  const form = useForm<UserRegistrationData>();
   const handleSubmit = form.handleSubmit(async (data) => {
-    const res = await RegisterApi(data)
-    console.log(res)
+    const res = await RegisterApi(data);
+    router.push("/auth/login");
   });
 
   return (
@@ -49,12 +46,12 @@ const Register = () => {
             <Stack direction="column" spacing={2} mt={3}>
               <Controller
                 control={form.control}
-                name="tel"
+                name="username"
                 rules={{ required: true }}
                 render={({ field, fieldState }) => (
                   <TextField
                     {...field}
-                    label="tell"
+                    label="username"
                     variant="standard"
                     error={!!fieldState.error}
                     helperText={!!fieldState.error}
@@ -64,12 +61,12 @@ const Register = () => {
 
               <Controller
                 control={form.control}
-                name="name"
+                name="fullName"
                 rules={{ required: true }}
                 render={({ field, fieldState }) => (
                   <TextField
                     {...field}
-                    label="name"
+                    label="full name"
                     variant="standard"
                     error={!!fieldState.error}
                     helperText={!!fieldState.error}
@@ -90,6 +87,7 @@ const Register = () => {
                   />
                 )}
               />
+
               <Controller
                 control={form.control}
                 name="password"
@@ -106,15 +104,17 @@ const Register = () => {
                 )}
               />
             </Stack>
-            <Button
-              type="submit"
-              variant="outlined"
-              color="inherit"
-              size="medium"
-              sx={{ marginTop: 2 }}
-            >
-              SIGN UP
-            </Button>
+            <Link href="/auth/login" variant="body2" color="inherit">
+              <Button
+                type="submit"
+                variant="outlined"
+                color="inherit"
+                size="medium"
+                sx={{ marginTop: 2 }}
+              >
+                SIGN UP
+              </Button>
+            </Link>
           </form>
         </CardContent>
 

@@ -3,8 +3,8 @@ import axios from "axios";
 export interface UserRegistrationData {
   email: string;
   password: string;
-  name: string;
-  tel: string;
+  username: string;
+  fullName: string;
 }
 
 export async function RegisterApi(data: UserRegistrationData) {
