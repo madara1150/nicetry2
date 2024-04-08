@@ -12,19 +12,19 @@ import {
   Typography,
 } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
+import { RegisterApi, UserRegistrationData } from "@/app/api/register";
 
 const Register = () => {
-  const form = useForm({
+  const form = useForm<UserRegistrationData>({
     defaultValues: {
-      fullname: "",
-      username: "",
       email: "",
       password: "",
     },
   });
 
   const handleSubmit = form.handleSubmit(async (data) => {
-    console.log(data);
+    const res = await RegisterApi(data)
+    console.log(res)
   });
 
   return (
@@ -49,12 +49,12 @@ const Register = () => {
             <Stack direction="column" spacing={2} mt={3}>
               <Controller
                 control={form.control}
-                name="fullname"
+                name="tel"
                 rules={{ required: true }}
                 render={({ field, fieldState }) => (
                   <TextField
                     {...field}
-                    label="Full Name"
+                    label="tell"
                     variant="standard"
                     error={!!fieldState.error}
                     helperText={!!fieldState.error}
@@ -64,12 +64,12 @@ const Register = () => {
 
               <Controller
                 control={form.control}
-                name="username"
+                name="name"
                 rules={{ required: true }}
                 render={({ field, fieldState }) => (
                   <TextField
                     {...field}
-                    label="username"
+                    label="name"
                     variant="standard"
                     error={!!fieldState.error}
                     helperText={!!fieldState.error}
