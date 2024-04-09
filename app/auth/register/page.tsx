@@ -12,13 +12,14 @@ import {
   Typography,
 } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
-import { RegisterApi, UserRegistrationData } from "@/app/api/register";
+import { RegisterApi } from "@/app/api/register";
 import { useRouter } from "next/navigation";
+import { UserRegister } from "@/app/types/auth";
 
 const Register = () => {
   const router = useRouter();
 
-  const form = useForm<UserRegistrationData>();
+  const form = useForm<UserRegister>();
   const handleSubmit = form.handleSubmit(async (data) => {
     const res = await RegisterApi(data);
     router.push("/auth/login");

@@ -1,3 +1,6 @@
+"use client";
+import { LoginApi } from "@/app/api/login";
+import { UserLogin } from "@/app/types/auth";
 import {
   Button,
   Card,
@@ -7,10 +10,20 @@ import {
   Link,
   Stack,
   TextField,
-  Typography,
 } from "@mui/material";
+import { useRouter } from "next/navigation";
+import { Controller, useForm } from "react-hook-form";
+import Typography from "@mui/joy/Typography";
 
 const Login = () => {
+  const router = useRouter();
+  const form = useForm<UserLogin>();
+
+  const handleSubmit = form.handleSubmit(async (data) => {
+    const res = await LoginApi(data);
+    router.push("/");
+  });
+
   return (
     <Container
       maxWidth="xl"
@@ -23,34 +36,55 @@ const Login = () => {
     >
       <Card variant="outlined" sx={{ width: 500 }}>
         <CardContent sx={{ padding: 5 }}>
-          <Typography variant="h3" fontWeight={600}>
+          <Typography level="h3" fontWeight={600}>
             Welcome Back
           </Typography>
-          <Typography variant="body1" fontWeight={200} color={"gray"}>
+          <Typography level="body-md" fontWeight={200} color="neutral">
             Please enter your details
           </Typography>
+          <form onSubmit={handleSubmit}>
+            <Stack direction={"column"} spacing={2} mt={3}>
+              <Controller
+                control={form.control}
+                name="email"
+                rules={{ required: true }}
+                render={({ field, fieldState }) => (
+                  <TextField
+                    {...field}
+                    label="email"
+                    variant="standard"
+                    error={!!fieldState.error}
+                    helperText={!!fieldState.error}
+                  />
+                )}
+              />
+              <Controller
+                control={form.control}
+                name="password"
+                rules={{ required: true }}
+                render={({ field, fieldState }) => (
+                  <TextField
+                    {...field}
+                    label="password"
+                    type="password"
+                    variant="standard"
+                    error={!!fieldState.error}
+                    helperText={!!fieldState.error}
+                  />
+                )}
+              />
+            </Stack>
 
-          <Stack direction={"column"} spacing={2} mt={3}>
-            <TextField
-              id="standard-basic"
-              label="usernamer"
-              variant="standard"
-            />
-            <TextField
-              type="password"
-              id="standard-basic"
-              label="password"
-              variant="standard"
-            />
-          </Stack>
-          <Button
-            variant="outlined"
-            color="inherit"
-            size="medium"
-            sx={{ marginTop: 2 }}
-          >
-            SIGN IN
-          </Button>
+            <Button
+              variant="outlined"
+              color="inherit"
+              size="medium"
+              type="submit"
+              sx={{ marginTop: 2 }}
+            >
+              SIGN IN
+            </Button>
+          </form>
         </CardContent>
 
         <CardActions sx={{ justifyContent: "center" }}>

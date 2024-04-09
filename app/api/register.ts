@@ -1,13 +1,7 @@
 import axios from "axios";
+import { UserRegister } from "../types/auth";
 
-export interface UserRegistrationData {
-  email: string;
-  password: string;
-  username: string;
-  fullName: string;
-}
-
-export async function RegisterApi(data: UserRegistrationData) {
+export async function RegisterApi(data: UserRegister) {
   try {
     const response = await axios.post(
       "http://localhost:3001/users/register",

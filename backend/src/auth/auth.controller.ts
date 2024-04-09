@@ -1,4 +1,12 @@
-import { Controller, Post, Request, Res, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  HttpException,
+  HttpStatus,
+  Post,
+  Request,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './local-auth.guard';
 
@@ -9,12 +17,17 @@ export class AuthController {
   @UseGuards(LocalAuthGuard)
   @Post('/login')
   async login(@Request() req, @Res({ passthrough: true }) res) {
-    const { access_token } = await this.authService.login(req.user);
+    try {
+      const { access_token } = await this.authService.login(req.user);
+      res.cookie('access_token', access_token, {
+        httpOnly: true,
+        secure: true,
+        credentials: true,
+      });
 
-    res.cookie('access_token', access_token, {
-      httpOnly: true,
-    });
-    
-    return { message: 'Login Successful' };
+      return { message: 'Login success' };
+    } catch (error) {
+      throw new HttpException('Login Failed', HttpStatus.UNAUTHORIZED);
+    }
   }
 }
