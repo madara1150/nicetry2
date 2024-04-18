@@ -20,8 +20,7 @@ const Login = () => {
   const form = useForm<UserLogin>();
 
   const handleSubmit = form.handleSubmit(async (data) => {
-    const res = await LoginApi(data);
-    router.push("/");
+    await LoginApi(data);
   });
 
   return (
