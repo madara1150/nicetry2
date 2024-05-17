@@ -21,6 +21,7 @@ const Login = () => {
 
   const handleSubmit = form.handleSubmit(async (data) => {
     await LoginApi(data);
+    router.push("/")
   });
 
   return (
