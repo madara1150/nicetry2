@@ -17,7 +17,7 @@ export const Navigation = () => {
         direction={"row"}
         justifyContent={"space-between"}
         alignItems={"center"}
-        sx={{ background: "#242526", padding: 1 }}
+        sx={{ background: "#242526", padding: 1, borderBottom: "1px solid #393a3b"}}
       >
         <Stack direction={"row"} alignItems={"center"}>
           <Box>
@@ -31,28 +31,28 @@ export const Navigation = () => {
         </Stack>
         <Stack direction={"row"}>
           <ButtonMenu>
-            <HomeIcon sx={{ fontSize: "35px", color: "gray" }} />
+            <HomeIcon sx={{ fontSize: "35px", color: "#b1b3b9" }} />
           </ButtonMenu>
           <ButtonMenu>
-            <OndemandVideoIcon sx={{ fontSize: "35px", color: "gray" }} />
+            <OndemandVideoIcon sx={{ fontSize: "35px", color: "#b1b3b9" }} />
           </ButtonMenu>
           <ButtonMenu>
-            <StorefrontIcon sx={{ fontSize: "35px", color: "gray" }} />
+            <StorefrontIcon sx={{ fontSize: "35px", color: "#b1b3b9" }} />
           </ButtonMenu>
           <ButtonMenu>
-            <GroupsIcon sx={{ fontSize: "35px", color: "gray" }} />
+            <GroupsIcon sx={{ fontSize: "35px", color: "#b1b3b9" }} />
           </ButtonMenu>
         </Stack>
 
         <Stack direction={"row"}>
           <ButtonMenu>
-            <WidgetsIcon sx={{ fontSize: "35px", color: "gray" }} />
+            <WidgetsIcon sx={{ fontSize: "35px", color: "#b1b3b9" }} />
           </ButtonMenu>
           <ButtonMenu>
-            <MessageIcon sx={{ fontSize: "35px", color: "gray" }} />
+            <MessageIcon sx={{ fontSize: "35px", color: "#b1b3b9" }} />
           </ButtonMenu>
           <ButtonMenu>
-            <NotificationsIcon sx={{ fontSize: "35px", color: "gray" }} />
+            <NotificationsIcon sx={{ fontSize: "35px", color: "#b1b3b9" }} />
           </ButtonMenu>
           <Box sx={{ padding: 1 }}>
             <Avatar />
